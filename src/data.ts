@@ -53,55 +53,122 @@ export const profile = {
   ],
   projects: [
     {
-      title: 'E-Commerce App',
+      title: 'Sistem Antrian Cuci Kendaraan',
       description:
-        'Aplikasi toko online full-stack dengan autentikasi JWT, keranjang belanja, payment gateway sandbox, dan dashboard admin.',
-      tech: ['React', 'Node.js', 'Go', 'PostgreSQL', 'Stripe'],
+        'Sistem antrian cuci kendaraan lengkap: pelanggan cek antrian dari link publik, admin kelola antrian dan status kendaraan secara real-time.',
+      tech: ['Go', 'React', 'Tailwind CSS'],
       github: '#',
-      demo: '#',
+      demo: 'https://cuci-mobil-profile.pages.dev/cek-antrian',
+      image: '',
       featured: true,
     },
     {
-      title: 'Task Management',
+      title: 'Landing Page 34 Anjungan PT PRPP Jawa Tengah',
       description:
-        'Aplikasi manajemen tugas real-time dengan fitur drag & drop board, kolaborasi tim, dan notifikasi.',
-      tech: ['React', 'TypeScript', 'Socket.io', 'MySQL'],
-      github: '#',
-      demo: '#',
+        'Landing page resmi 34 anjungan PT PRPP Jawa Tengah sebagai sarana informasi dan promosi proyek anjungan.',
+      tech: ['React', 'Bootstrap', 'Tailwind CSS'],
+      github: 'https://github.com/setyaardik/landingpage.git',
+      demo: 'https://qrgm.prppjawatengah.com/',
+      image: '',
       featured: true,
     },
     {
-      title: 'Blog Platform',
+      title: 'Senandung Asa',
       description:
-        'Platform blog dengan markdown editor, sistem komentar, dan SEO-friendly SSR menggunakan full-stack JavaScript.',
-      tech: ['Next.js', 'MongoDB', 'Tailwind CSS'],
+        'Website resmi Senandung Asa — platform informasi dan kegiatan yang dibangun dengan Laravel.',
+      tech: ['Laravel', 'Tailwind CSS', 'MySQL'],
+      github: 'https://github.com/setyaardik/senandung-asa.git',
+      demo: 'https://senandungasa.net',
+      image: '',
+      featured: true,
+    },
+    {
+      title: 'Simple LMS',
+      description:
+        'Backend Learning Management System sederhana: manajemen kursus, materi, tugas, dan penilaian belajar.',
+      tech: ['Python', 'Django'],
+      github: 'https://github.com/setyaardik/Ujian-Akhir-PSS.git',
+      demo: '',
+      image: '',
+      featured: false,
+    },
+    {
+      title: 'E-commerce Blangkis',
+      description:
+        'Aplikasi e-commerce mobile dengan katalog produk, keranjang belanja, dan alur checkout.',
+      tech: ['Flutter', 'Dart'],
       github: '#',
-      demo: '#',
+      demo: '',
+      image: '',
+      featured: false,
+    },
+    {
+      title: 'Movie App',
+      description:
+        'Aplikasi film full-stack: cari dan lihat info film di frontend, dengan API backend Django dan didocker-kan.',
+      tech: ['React', 'Django', 'Docker'],
+      github: '#',
+      demo: '',
+      image: '',
+      featured: false,
+    },
+    {
+      title: 'QuickTix',
+      description:
+        'Aplikasi pemesanan tiket event: backend Go dengan API, frontend React, dan database terpisah.',
+      tech: ['Go', 'React', 'PostgreSQL'],
+      github: '#',
+      demo: '',
+      image: '',
+      featured: false,
+    },
+    {
+      title: 'Ticketing App Capstone',
+      description:
+        'Aplikasi tiket untuk capstone course berbasis Laravel — kelola tiket dan transaksi pemesanan.',
+      tech: ['Laravel', 'Tailwind CSS', 'MySQL'],
+      github: 'https://github.com/setyaardik/CapstoneBIMKAR.git',
+      demo: '',
+      image: '',
+      featured: false,
+    },
+    {
+      title: 'Tiketin Aja',
+      description:
+        'Aplikasi pencarian dan pemesanan tiket pesawat: pilih rute, cek jadwal, dan lihat pemesanan dengan peta dan grafik.',
+      tech: ['React', 'Tailwind CSS', 'Vite'],
+      github: 'https://github.com/setyaardik/psk.git',
+      demo: '',
+      image: '',
+      featured: false,
+    },
+    {
+      title: 'Project Board',
+      description:
+        'Aplikasi papan kerja (kanban) real-time: autentikasi lengkap, drag & drop kolom, dan kolaborasi tim via Socket.io.',
+      tech: ['Next.js', 'TypeScript', 'Prisma', 'Tailwind CSS', 'Socket.io'],
+      github: '#',
+      demo: '',
+      image: '',
       featured: false,
     },
   ],
   experience: [
     {
-      role: 'Fullstack Developer Intern',
-      company: 'PT Contoh Teknologi',
-      period: 'Jul 2025 - Dec 2025',
+      role: 'Web Developer Intern',
+      company: 'PT PRPP Jawa Tengah',
+      period: 'Feb 2025 - Mar 2025',
       description:
-        'Membangun dan memelihara fitur frontend & backend, melakukan code review, dan kolaborasi dengan tim agile.',
-    },
-    {
-      role: 'Frontend Developer - Freelance',
-      company: 'Self-employed',
-      period: 'Jan 2025 - Jun 2025',
-      description:
-        'Membuat landing page dan aplikasi web untuk klien kecil menggunakan React dan Tailwind CSS.',
+        'Membangun dan memelihara fitur website perusahaan, kolaborasi dengan tim internal, dan belajar alur pengembangan produk web secara nyata.',
     },
   ],
   education: [
     {
-      school: 'Universitas Contoh',
+      school: 'Universitas Dian Nuswantoro',
       degree: 'S1 Teknik Informatika',
-      period: '2021 - 2025 (sedang berjalan)',
-      description: 'GPA 3.8/4.0. Aktif di komunitas pengembangan web kampus.',
+      period: '2022 - 2026',
+      description:
+        'Mahasiswa Teknik Informatika yang fokus mendalami web development full-stack dan aktif di komunitas pengembangan teknologi kampus.',
     },
   ],
 }
