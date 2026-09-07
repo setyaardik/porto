@@ -6,9 +6,8 @@ import ScrambleText from '../motion/ScrambleText'
 import Tilt from '../motion/Tilt'
 
 const stats = [
-  { to: 12, suffix: '+', label: 'proyek' },
-  { to: 15, suffix: '+', label: 'teknologi' },
-  { to: 3, suffix: '', label: 'hackathon' },
+  { to: 8, suffix: '+', label: 'proyek' },
+  { to: 10, suffix: '+', label: 'teknologi' },
 ]
 
 function About() {
@@ -87,7 +86,7 @@ function About() {
                 </Reveal>
 
                 <Reveal delay={0.2}>
-                  <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
+                  <div className="mt-12 grid grid-cols-2 gap-6 max-w-xs">
                     {stats.map((s) => (
                       <div key={s.label}>
                         <p className="font-display text-4xl font-bold text-lime">

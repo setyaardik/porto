@@ -58,8 +58,8 @@ function Contact() {
             <Reveal>
 <h2 className="font-display font-bold tracking-tight leading-tight" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
                 Ada ide atau proyek yang seru?{' '}
-                <span className="text-lime">Kirim pesan</span> — saya bakal bales{' '}
-                <span className="mono text-base">&lt; 48 jam.</span>
+                <span className="text-lime">Kirim pesan</span> — saya akan balas{' '}
+                <span className="mono text-base">&lt; 12 jam.</span>
               </h2>
               <motion.span
                 className="block mt-5 h-[3px] w-24 bg-lime origin-left"
