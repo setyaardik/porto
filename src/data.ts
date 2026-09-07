@@ -154,6 +154,22 @@ export const profile = {
       featured: false,
     },
   ],
+  certificates: [
+    {
+      title: 'AI Literacy for Everyone: Understand, Apply, Create',
+      issuer: 'BASS Training Center & Consultant',
+      year: '2025',
+      file: '/sertif-ai.pdf',
+      preview: '/sertif-ai-preview.jpg',
+    },
+    {
+      title: 'Sertifikasi Kompetensi Pengembang Web (BNSP)',
+      issuer: 'BNSP — LSP Universitas Dian Nuswantoro',
+      year: '2026',
+      file: '/sertif-web.pdf',
+      preview: '/sertif-web-preview.jpg',
+    },
+  ],
   experience: [
     {
       role: 'Web Developer Intern',
@@ -181,5 +197,6 @@ export const navLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Sertifikat', href: '#sertifikat' },
   { label: 'Contact', href: '#contact' },
 ]

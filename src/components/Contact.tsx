@@ -50,7 +50,7 @@ function Contact() {
         <div className="grid lg:grid-cols-12 gap-14">
           <div className="lg:col-span-3">
             <Reveal className="mono text-xs uppercase text-muted sticky top-24">
-              <span className="text-lime">05</span> / kontak
+              <span className="text-lime">06</span> / kontak
             </Reveal>
           </div>
 
