@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# CV & dokumen pribadi
+CV_*.docx
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
