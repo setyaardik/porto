@@ -168,6 +168,7 @@ export const profile = {
       school: 'Universitas Dian Nuswantoro',
       degree: 'S1 Teknik Informatika',
       period: '2022 - 2026',
+      gpa: '3.4',
       description:
         'Mahasiswa Teknik Informatika yang fokus mendalami web development full-stack dan aktif di komunitas pengembangan teknologi kampus.',
     },

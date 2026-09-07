@@ -3,7 +3,7 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import { profile } from '../data'
 import Reveal from '../motion/Reveal'
 
-type Item = { title: string; subtitle: string; period: string }
+type Item = { title: string; subtitle: string; period: string; gpa?: string }
 
 function Chronology({ items, title }: { items: Item[]; title: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -30,7 +30,14 @@ function Chronology({ items, title }: { items: Item[]; title: string }) {
                 transition={{ delay: i * 0.1 + 0.2 }}
               />
               <p className="mono text-xs text-lime mb-1">{item.period}</p>
-              <p className="font-display font-semibold text-lg">{item.title}</p>
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <p className="font-display font-semibold text-lg">{item.title}</p>
+                {item.gpa && (
+                  <span className="mono text-[10px] uppercase text-lime border border-lime/50 rounded-md px-2 py-0.5">
+                    IPK {item.gpa}
+                  </span>
+                )}
+              </div>
               <p className="text-sm text-muted mt-0.5">{item.subtitle}</p>
             </div>
           </Reveal>
@@ -66,6 +73,7 @@ function Timeline() {
                 title: e.degree,
                 subtitle: e.school,
                 period: e.period,
+                gpa: e.gpa,
               }))}
             />
           </div>
