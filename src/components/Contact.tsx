@@ -7,18 +7,38 @@ import Magnetic from '../motion/Magnetic'
 import { scrollToId } from '../lib/lenis'
 
 function Contact() {
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle')
 
   const go = (e: React.MouseEvent, href: string) => {
     e.preventDefault()
     scrollToId(href)
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSent(true)
-    e.currentTarget.reset()
-    setTimeout(() => setSent(false), 4000)
+    const form = e.currentTarget
+
+    if (!profile.formEndpoint) {
+      setStatus('error')
+      return
+    }
+
+    setStatus('sending')
+    try {
+      const res = await fetch(profile.formEndpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      })
+      if (res.ok) {
+        form.reset()
+        setStatus('ok')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   const inputBase =
@@ -56,11 +76,11 @@ function Contact() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="name" className="sr-only">Nama</label>
-                    <input id="name" type="text" required placeholder="nama" className={inputBase} />
+                    <input id="name" name="name" type="text" required placeholder="nama" className={inputBase} />
                   </div>
                   <div>
                     <label htmlFor="email" className="sr-only">Email</label>
-                    <input id="email" type="email" required placeholder="email" className={inputBase} />
+                    <input id="email" name="email" type="email" required placeholder="email" className={inputBase} />
                   </div>
                 </div>
 
@@ -68,6 +88,7 @@ function Contact() {
                   <label htmlFor="message" className="sr-only">Pesan</label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
                     required
                     placeholder="ceritakan kebutuhanmu..."
@@ -78,13 +99,14 @@ function Contact() {
                 <Magnetic strength={0.2}>
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-full bg-lime text-bg px-7 py-3.5 text-sm font-semibold hover:bg-ink hover:text-lime transition-colors"
+                    disabled={status === 'sending'}
+                    className="inline-flex items-center gap-2 rounded-full bg-lime text-bg px-7 py-3.5 text-sm font-semibold hover:bg-ink hover:text-lime transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    kirim_pesan() →
+                    {status === 'sending' ? 'mengirim...' : 'kirim_pesan() →'}
                   </button>
                 </Magnetic>
 
-                {sent && (
+                {status === 'ok' && (
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -92,6 +114,17 @@ function Contact() {
                     role="status"
                   >
                     ✓ terkirim — makasih, saya bales secepatnya.
+                  </motion.p>
+                )}
+
+                {status === 'error' && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="mono text-xs text-[#ff5f57]"
+                    role="alert"
+                  >
+                    ✗ gagal terkirim — coba lagi atau email langsung ke {profile.email}.
                   </motion.p>
                 )}
               </form>

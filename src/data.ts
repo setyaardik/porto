@@ -7,6 +7,7 @@ export const profile = {
   phone: '+62 877 1104 3628',
   linkedin: 'http://www.linkedin.com/in/setya-ardi-kurniawan-714563430',
   github: 'https://github.com/setyaardik',
+  formEndpoint: 'https://formspree.io/f/mkjnqwqa',
   typewriter: [
     'Fullstack Developer',
     'React Developer',
