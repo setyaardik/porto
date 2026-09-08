@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa6'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { profile } from '../data'
 import Reveal from '../motion/Reveal'
 import Tilt from '../motion/Tilt'
@@ -13,14 +13,24 @@ type Project = (typeof profile.projects)[number]
 function Preview({ p }: { p: Project }) {
   const images = (p.images?.length ? p.images : p.image ? [p.image] : []) as string[]
   const [active, setActive] = useState(0)
+  const [hovered, setHovered] = useState(false)
   const idx = images.length ? Math.min(active, images.length - 1) : 0
   const img = images[idx]
+
+  useEffect(() => {
+    if (images.length < 2 || hovered) return
+    const id = setInterval(() => setActive((a) => (a + 1) % images.length), 3500)
+    return () => clearInterval(id)
+  }, [images.length, hovered])
 
   const pick = (e: React.SyntheticEvent, i: number) => {
     e.preventDefault()
     e.stopPropagation()
     setActive(i)
   }
+
+  const prev = (e: React.SyntheticEvent) => pick(e, (idx - 1 + images.length) % images.length)
+  const next = (e: React.SyntheticEvent) => pick(e, (idx + 1) % images.length)
 
   if (!img) {
     return (
@@ -42,7 +52,11 @@ function Preview({ p }: { p: Project }) {
   }
 
   return (
-    <div className="relative h-60 md:h-72 overflow-hidden border-b border-line bg-ink">
+    <div
+      className="relative h-60 md:h-72 overflow-hidden border-b border-line bg-ink group/preview"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <img
         src={img}
         alt=""
@@ -80,7 +94,32 @@ function Preview({ p }: { p: Project }) {
       </span>
 
       {images.length > 1 && (
-        <div className="absolute top-3 right-3 flex gap-1.5">
+        <>
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={prev}
+            onKeyDown={(e) => e.key === 'Enter' && prev(e)}
+            aria-label="Screenshot sebelumnya"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 grid place-items-center rounded-full bg-ink/70 border border-lime/40 text-lime backdrop-blur-md cursor-pointer hover:bg-lime hover:text-bg transition-colors"
+          >
+            <ChevronLeft size={16} />
+          </span>
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={next}
+            onKeyDown={(e) => e.key === 'Enter' && next(e)}
+            aria-label="Screenshot berikutnya"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 grid place-items-center rounded-full bg-ink/70 border border-lime/40 text-lime backdrop-blur-md cursor-pointer hover:bg-lime hover:text-bg transition-colors"
+          >
+            <ChevronRight size={16} />
+          </span>
+        </>
+      )}
+
+      {images.length > 1 && (
+        <div className="absolute top-3 right-3 z-20 flex gap-1.5">
           {images.map((im, i) => (
             <span
               key={im}
@@ -90,7 +129,7 @@ function Preview({ p }: { p: Project }) {
               onKeyDown={(e) => e.key === 'Enter' && pick(e, i)}
               aria-label={`Lihat screenshot ${i + 1}`}
               className={`block h-8 w-12 rounded border cursor-pointer transition-all duration-300 ${
-                i === idx ? 'border-lime scale-110 shadow-[0_0_12px_rgba(186,255,58,0.4)]' : 'border-white/25 opacity-60 hover:opacity-100'
+                i === idx ? 'border-lime scale-110 shadow-[0_0_12px_rgba(186,255,58,0.4)]' : 'border-white/30 opacity-70 hover:opacity-100'
               }`}
               style={{ backgroundImage: `url(${im})`, backgroundSize: 'cover', backgroundPosition: 'top' }}
             />
