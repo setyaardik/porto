@@ -61,6 +61,7 @@ export const profile = {
       github: '#',
       demo: 'https://cuci-mobil-profile.pages.dev/cek-antrian',
       image: '',
+      images: ['/karya/cuci-kendaraan/1.png', '/karya/cuci-kendaraan/2.png'],
       featured: true,
     },
     {
@@ -71,6 +72,7 @@ export const profile = {
       github: 'https://github.com/setyaardik/landingpage.git',
       demo: 'https://qrgm.prppjawatengah.com/',
       image: '',
+      images: ['/karya/landingpage/1.png', '/karya/landingpage/2.png'],
       featured: true,
     },
     {
@@ -81,6 +83,7 @@ export const profile = {
       github: 'https://github.com/setyaardik/senandung-asa.git',
       demo: 'https://senandungasa.net',
       image: '',
+      images: ['/karya/senandungasa/1.png'],
       featured: true,
     },
     {
@@ -91,6 +94,7 @@ export const profile = {
       github: 'https://github.com/setyaardik/Ujian-Akhir-PSS.git',
       demo: '',
       image: '',
+      images: ['/karya/simple_lms/1.png', '/karya/simple_lms/w.png'],
       featured: false,
     },
     {
@@ -101,6 +105,7 @@ export const profile = {
       github: '#',
       demo: '',
       image: '',
+      images: ['/karya/blankis/1.png', '/karya/blankis/2.png'],
       featured: false,
     },
     {

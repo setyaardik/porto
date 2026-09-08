@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa6'
 import { ArrowUpRight } from 'lucide-react'
 import { profile } from '../data'
@@ -9,33 +11,84 @@ import { TECH_ICONS } from '../lib/techIcons'
 type Project = (typeof profile.projects)[number]
 
 function Preview({ p }: { p: Project }) {
-  if (p.image) {
+  const images = (p.images?.length ? p.images : p.image ? [p.image] : []) as string[]
+  const [active, setActive] = useState(0)
+  const idx = images.length ? Math.min(active, images.length - 1) : 0
+  const img = images[idx]
+
+  const pick = (e: React.SyntheticEvent, i: number) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setActive(i)
+  }
+
+  if (!img) {
     return (
-      <div className="relative h-52 md:h-56 overflow-hidden border-b border-line">
-        <img
-          src={p.image}
-          alt={`Screenshot ${p.title}`}
-          loading="lazy"
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-        />
+      <div className="relative h-52 md:h-56 overflow-hidden border-b border-line bg-gradient-to-b from-surface to-bg grid place-items-center">
+        <div className="absolute top-3.5 left-4 flex gap-1.5" aria-hidden>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+        </div>
+        <span className="font-serif italic text-[6rem] leading-none text-ink/10 select-none" aria-hidden>
+          {p.title[0]}
+        </span>
+        <span className="absolute bottom-3 right-4 mono text-[10px] uppercase text-muted/70">
+          preview — coming soon
+        </span>
+        <span className="absolute top-3.5 right-4 text-lime" aria-hidden>✦</span>
       </div>
     )
   }
 
   return (
-    <div className="relative h-52 md:h-56 overflow-hidden border-b border-line bg-gradient-to-b from-surface to-bg grid place-items-center">
-      <div className="absolute top-3.5 left-4 flex gap-1.5" aria-hidden>
-        <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-        <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+    <div className="relative h-52 md:h-56 overflow-hidden border-b border-line">
+      <div className="w-full h-full transition-transform duration-[900ms] ease-out group-hover:scale-110">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={img}
+            src={img}
+            alt={`Screenshot ${p.title}${images.length > 1 ? ` ${idx + 1}` : ''}`}
+            loading="lazy"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full h-full object-cover object-top"
+          />
+        </AnimatePresence>
       </div>
-      <span className="font-serif italic text-[6rem] leading-none text-ink/10 select-none" aria-hidden>
-        {p.title[0]}
+
+      <span
+        className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-lime/15 to-transparent pointer-events-none"
+        aria-hidden
+      />
+      <span
+        className="absolute left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-lime/80 to-transparent animate-scan"
+        aria-hidden
+      />
+      <span className="absolute bottom-3 left-3 mono text-[10px] uppercase bg-ink/70 border border-lime/40 rounded px-2 py-1 backdrop-blur-md animate-floaty">
+        shot {idx + 1}/{images.length}
       </span>
-      <span className="absolute bottom-3 right-4 mono text-[10px] uppercase text-muted/70">
-        preview — coming soon
-      </span>
-      <span className="absolute top-3.5 right-4 text-lime" aria-hidden>✦</span>
+
+      {images.length > 1 && (
+        <div className="absolute top-3 right-3 flex gap-1.5">
+          {images.map((im, i) => (
+            <span
+              key={im}
+              role="button"
+              tabIndex={0}
+              onClick={(e) => pick(e, i)}
+              onKeyDown={(e) => e.key === 'Enter' && pick(e, i)}
+              aria-label={`Lihat screenshot ${i + 1}`}
+              className={`block h-8 w-12 rounded border cursor-pointer transition-all duration-300 ${
+                i === idx ? 'border-lime scale-110 shadow-[0_0_12px_rgba(186,255,58,0.4)]' : 'border-white/25 opacity-60 hover:opacity-100'
+              }`}
+              style={{ backgroundImage: `url(${im})`, backgroundSize: 'cover', backgroundPosition: 'top' }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
