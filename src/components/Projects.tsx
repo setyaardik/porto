@@ -42,19 +42,27 @@ function Preview({ p }: { p: Project }) {
   }
 
   return (
-    <div className="relative h-52 md:h-56 overflow-hidden border-b border-line">
-      <div className="w-full h-full transition-transform duration-[900ms] ease-out group-hover:scale-110">
+    <div className="relative h-60 md:h-72 overflow-hidden border-b border-line bg-ink">
+      <img
+        src={img}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110 transition-transform duration-[1200ms] ease-out group-hover:scale-125"
+      />
+
+      <div className="relative h-full w-full flex items-center justify-center p-5">
         <AnimatePresence mode="wait">
           <motion.img
             key={img}
             src={img}
             alt={`Screenshot ${p.title}${images.length > 1 ? ` ${idx + 1}` : ''}`}
             loading="lazy"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.4 }}
-            className="w-full h-full object-cover object-top"
+            className="max-h-full max-w-full w-auto h-auto object-contain rounded-md border border-line/40 shadow-[0_18px_50px_-12px_rgba(0,0,0,0.85)] transition-transform duration-[900ms] ease-out group-hover:scale-105"
           />
         </AnimatePresence>
       </div>
