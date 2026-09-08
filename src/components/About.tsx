@@ -49,7 +49,7 @@ function About() {
                       <span className="absolute bottom-2 right-2 w-5 h-5 border-b-2 border-r-2 border-lime pointer-events-none" aria-hidden />
 
                       <span className="absolute bottom-3 right-3 mono text-[10px] uppercase bg-ink/80 text-lime border border-lime/40 rounded-md px-2.5 py-1 backdrop-blur-md animate-floaty">
-                        base: tegal
+                        base: semarang
                       </span>
                     </figure>
                   </div>
@@ -66,8 +66,7 @@ function About() {
               <div className="md:col-span-3">
                 <Reveal>
                   <h2 className="font-display font-bold tracking-tight leading-tight" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
-                    Saya bikin web yang <ScrambleText text="berguna" />, bukan cuma
-                    yang keren di mata.
+                    Buat saya, web yang bagus itu yang <ScrambleText text="berfungsi" /> dan nyaman dipakai.
                   </h2>
                   <motion.span
                     className="block mt-5 h-[3px] w-24 bg-lime origin-left"

@@ -106,7 +106,7 @@ function Hero() {
               className="mt-10 flex items-center gap-5 mono text-xs text-muted"
             >
               <span className="uppercase">
-                {profile.location} <span className="text-lime">/</span> web developer
+                {profile.location} <span className="text-lime">/</span> fullstack developer
               </span>
               <span className="flex items-center gap-3">
                 {[

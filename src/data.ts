@@ -15,7 +15,7 @@ export const profile = {
     'UI/UX Enthusiast',
   ],
   summary:
-    'Fullstack developer yang suka mengubah ide jadi aplikasi web yang cepat, ringan, dan nyaman dipakai. Terbiasa membangun end-to-end dengan React di frontend dan Node.js di backend. Senang belajar teknologi baru dan berusaha menghasilkan kode yang bersih, teruji, dan scalable.',
+    'Fullstack developer yang masih terus belajar membangun aplikasi web end-to-end. Terbiasa mengerjakan project pakai React, Go, Django, dan Laravel, dengan PostgreSQL dan MySQL untuk urusan data. Lebih suka menulis kode yang jelas dan mudah dipahami daripada yang terlihat rumit.',
   skills: [
     { name: 'React', level: 90, icon: 'react' },
     { name: 'TypeScript', level: 85, icon: 'ts' },

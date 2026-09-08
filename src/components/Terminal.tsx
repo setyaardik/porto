@@ -5,7 +5,7 @@ const ROWS = [
   { type: 'cmd', text: 'whoami' },
   { type: 'out', text: profile.name + ' — fullstack developer' },
   { type: 'cmd', text: 'stack --list' },
-  { type: 'out', text: 'react · node · go · django · postgres · mysql' },
+  { type: 'out', text: 'react · next · go · django · laravel · flutter · postgres · mysql' },
   { type: 'cmd', text: 'git status' },
   { type: 'out', text: 'currently building web apps, learning new things' },
   { type: 'cmd', text: 'ping anyone' },
