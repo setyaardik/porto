@@ -15,7 +15,7 @@ export const profile = {
     'UI/UX Enthusiast',
   ],
   summary:
-    'Fullstack developer yang masih terus belajar membangun aplikasi web end-to-end. Terbiasa mengerjakan project pakai React, Go, Django, dan Laravel, dengan PostgreSQL dan MySQL untuk urusan data. Lebih suka menulis kode yang jelas dan mudah dipahami daripada yang terlihat rumit.',
+    'Lulusan Teknik Informatika Universitas Dian Nuswantoro yang tertarik pada pengembangan aplikasi web dan mobile. Pernah magang sebagai Web Developer Intern di PT PRPP Jawa Tengah (Perseroda), ikut mengembangkan sistem informasi berbasis web untuk Grand Maerakaca. Terbiasa menggunakan React, JavaScript, Flutter, Go, Django, Laravel, PHP, MySQL, dan REST API. Terus mengembangkan kemampuan di bidang full-stack development serta terbuka untuk kesempatan kerja maupun magang.',
   skills: [
     { name: 'React', level: 90, icon: 'react' },
     { name: 'TypeScript', level: 85, icon: 'ts' },
@@ -191,7 +191,7 @@ export const profile = {
       period: '2022 - 2026',
       gpa: '3.4',
       description:
-        'Mahasiswa Teknik Informatika yang fokus mendalami web development full-stack dan aktif di komunitas pengembangan teknologi kampus.',
+        'Lulusan Teknik Informatika yang fokus mendalami web development full-stack dan aktif di komunitas pengembangan teknologi kampus.',
     },
   ],
 }
